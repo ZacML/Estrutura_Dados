@@ -1,4 +1,4 @@
-package models;
+package pilhas.models;
 
 import lombok.*;
 
@@ -10,7 +10,6 @@ import lombok.*;
 public class PilhaLivro {
 
     private Livro topo;
-    private Livro proximo;
 
     public boolean isEmpty(){
         return topo == null;
@@ -18,7 +17,7 @@ public class PilhaLivro {
 
     public void push(Livro l){
         if (!isEmpty()){
-            proximo = topo;
+            l.proximo = topo;
         }
         topo = l;
     }
@@ -26,7 +25,7 @@ public class PilhaLivro {
     public Livro pop(){
         if (!isEmpty()){
             Livro saiu = topo;
-            topo = proximo;
+            topo = topo.proximo;
             return saiu;
         }
         return null;
@@ -48,7 +47,7 @@ public class PilhaLivro {
 
         while (aux.topo != null){
             retorno.append(aux.topo.getTitulo()).append("\n");
-            aux.topo = aux.proximo;
+            aux.topo = topo.proximo;
         }
         return retorno.toString();
     }

@@ -1,4 +1,4 @@
-package models;
+package pilhas.models;
 
 import jdk.jfr.Description;
 import org.junit.jupiter.api.BeforeEach;
@@ -16,9 +16,9 @@ class PilhaLivroTest {
     @BeforeEach
     public void init(){
         pilha = PilhaLivro.builder().build();
-        l1 = new Livro("titulo01",100,2010);
-        l2 = new Livro("titulo02",200,2020);
-        l3 = new Livro("titulo03",300,2030);
+        l1 = new Livro("titulo01",100,2010,null);
+        l2 = new Livro("titulo02",200,2020,null);
+        l3 = new Livro("titulo03",300,2030,null);
     }
 
     @Test
@@ -33,15 +33,27 @@ class PilhaLivroTest {
 
     @Test
     @Description("Teste remoção da pilha")
-    public void popTest() {
+    void removePilhaTest() {
         pilha.push(l1);
         pilha.push(l2);
         pilha.push(l3);
         pilha.pop();
-        assertEquals(l2, pilha.peek());
+        assertEquals(l2.getTitulo(), pilha.peek().getTitulo());
         pilha.pop();
-        assertEquals(l1, pilha.peek());
-//        pilha.pop();
-//        assertTrue(pilha.isEmpty());
+        assertEquals(l1.getTitulo(), pilha.peek().getTitulo());
+        pilha.pop();
+        System.out.println(pilha.peek());
+        assertTrue(pilha.isEmpty());
+    }
+
+    @Test
+    @Description("Teste de view")
+    void viewPilhaTest(){
+        pilha.push(l1);
+        pilha.push(l2);
+        pilha.push(l3);
+        String r = pilha.view();
+        System.out.println(r);
+        assertEquals("titulo03\ntitulo02\ntitulo01\n", r);
     }
 }
