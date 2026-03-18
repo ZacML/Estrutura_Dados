@@ -7,6 +7,6 @@ import lombok.*;
 @NoArgsConstructor
 @Builder
 public class Pessoa {
-    private String nome;
-    Pessoa proximo;
+    public String nome;
+    public Pessoa proximo;
 }
