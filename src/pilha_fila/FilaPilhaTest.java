@@ -19,10 +19,10 @@ class FilaPilhaTest {
     void init(){
         fila = new Fila();
         pilha = new Pilha();
-        pA = new Pessoa("A", null);
-        pB = new Pessoa("B", null);
-        pC = new Pessoa("C", null);
-        pD = new Pessoa("D", null);
+        pA = new Pessoa();
+        pB = new Pessoa();
+        pC = new Pessoa();
+        pD = new Pessoa();
     }
 
     @Test
